@@ -1,10 +1,10 @@
-#include <fcntl.h>
-#include <unistd.h>
+#include <fcntl.h>   //File Control Operations
+#include <unistd.h>  //POSIX API --  read(), write(), and close() 
 
 int main() {
 
 int fd1 = open("file1.txt", O_RDONLY);
-int fd2 = open("file2.txt", O_WRONLY | O_CREAT, 0644);
+int fd2 = open("file2.txt", O_WRONLY | O_CREAT, 0644);  //rw-r-r
 char buffer[1024];
 
 int n;
