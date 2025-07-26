@@ -24,11 +24,11 @@ int main() {
         // If exec fails
         perror("exec failed");
         exit(1); // exit with error
-    // } else {
-    //     // Parent process
-    //     printf("Parent: My PID = %d, Child PID = %d\n", getpid(), pid);
+    } else {
+        // Parent process
+        printf("Parent: My PID = %d, Child PID = %d\n", getpid(), pid);
 
-        // Wait for the child to finish
+        Wait for the child to finish
         wait(NULL);
 
         // Exit parent cleanly
