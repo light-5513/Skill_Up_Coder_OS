@@ -28,7 +28,7 @@ int main() {
         // Parent process
         printf("Parent: My PID = %d, Child PID = %d\n", getpid(), pid);
 
-        Wait for the child to finish
+        //Wait for the child to finish
         wait(NULL);
 
         // Exit parent cleanly
