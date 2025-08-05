@@ -16,8 +16,14 @@ int main() {
         scanf("%d", &bt[i]);
     }
 
-    // Sort processes based on burst time (Shortest Job First)
+// Sort processes based on burst time (Shortest Job First)
+// Controls the number of passes through the array.
+// Runs n - 1 times, because you only need n - 1 passes to sort n elements.
+// Each pass ensures the largest unsorted value "bubbles up" to its correct position at the end.
     for (int i = 0; i < n - 1; i++) {
+        // Compare adjacent elements and swap if they are in the wrong order
+        // This loop runs n - i - 1 times, as the last i elements are already sorted.
+        // The inner loop compares adjacent elements and swaps them if they are out of order.
         for (int j = 0; j < n - i - 1; j++) {
             if (bt[j] > bt[j + 1]) {
                 // Swap burst times

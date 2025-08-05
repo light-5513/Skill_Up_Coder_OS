@@ -2,7 +2,7 @@
 
 int main() {
     int n;
-    int at[10], bt[10], wt[10], tat[10], ct[10];
+    int at[10], bt[10], wt[10], tat[10], ct[10], pid[10];
     float totaltat = 0, totalwt = 0;
 
     // Input number of processes
@@ -17,6 +17,29 @@ int main() {
         scanf("%d", &at[i]);
         printf("Burst Time: ");
         scanf("%d", &bt[i]);
+        pid[i] = i + 1; // Store process ID
+    }
+
+    // Sort processes by arrival time (FCFS requires sorting by arrival time)
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (at[j] > at[j + 1]) {
+                // Swap arrival times
+                int temp = at[j];
+                at[j] = at[j + 1];
+                at[j + 1] = temp;
+                
+                // Swap burst times
+                temp = bt[j];
+                bt[j] = bt[j + 1];
+                bt[j + 1] = temp;
+                
+                // Swap process IDs
+                temp = pid[j];
+                pid[j] = pid[j + 1];
+                pid[j + 1] = temp;
+            }
+        }
     }
 
     // Initialize completion time, waiting time, and turnaround time
@@ -44,7 +67,7 @@ int main() {
     // Display results
     printf("\nProcess\tAT\tBT\tCT\tTAT\tWT\n");
     for (int i = 0; i < n; i++) {
-        printf("P%d\t%d\t%d\t%d\t%d\t%d\n", i + 1, at[i], bt[i], ct[i], tat[i], wt[i]);
+        printf("P%d\t%d\t%d\t%d\t%d\t%d\n", pid[i], at[i], bt[i], ct[i], tat[i], wt[i]);
     }
 
     // Calculate and display averages
